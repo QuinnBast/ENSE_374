@@ -30,8 +30,7 @@ public class ListElement {
 		return this.next;
 	}
 	
-	public void setNext(int value){
-		this.next = new ListElement();
-		this.next.setData(value);
+	public void setNext(ListElement value){
+		this.next = value;
 	}
 }
