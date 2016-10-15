@@ -1,14 +1,15 @@
 
 public class LinkedList {
 	
-	private ListElement head = new ListElement();
-	private ListElement tail = new ListElement();
+	private ListElement head = new ListElement();	//the head of the list
+	private ListElement tail = new ListElement();	//the tail of the list
 	
-	public LinkedList(){
+	public LinkedList(){		//Default constructor
 		head = null;
+		tail = null;
 	}
 	
-	public void addElement(int data){
+	public void addElement(int data){	//add an Element to the list
 		if (head == null)
 		{
 			head = new ListElement(data);
@@ -59,9 +60,7 @@ public class LinkedList {
 
 	public void deleteElement(int index)
 	{
-		//This function will return a new ListElement if the function cannot find a node in the tree.
-		//Therefore, if an element is not found, when a new node is returned, it will be initialized but not be in the tree.
-		
+		//This function will delete a node from the tree.
 		ListElement loop = head;
 		int i = 0;
 		
@@ -78,34 +77,50 @@ public class LinkedList {
 			System.out.println("Node deleted.");
 			return;
 		}
-		else while (i <= index)
+		else while (loop != null)
 		{
-			if (loop.hasNext() == false)
+			//There is only one element in the tree
+			if (loop.hasNext() == false && index==0)
+			{
+				head = null;
+				tail = null;
+				return;
+			}
+			//If the next node should be deleted
+			if (i + 1 == index)
+			{
+				//If there is a node to delete at that location
+				if (loop.hasNext()){
+					//If there is a node after it,
+					if (loop.getNext().hasNext()){
+
+						loop.setNext(loop.getNext().getNext());
+						loop.getNext().setPrev(loop);
+						System.out.println("Node deleted.");
+						return;
+					}
+					//Otherwise, we are deleting the last element
+
+					loop.setNext(new ListElement());
+					tail = loop;
+					System.out.println("Node deleted.");
+					return;
+				}
+			}
+			else
 			{
 				System.out.println("Index is larger than the list.");
-				return;
-			}
-			//If the node is the last node in the list
-			if ((i + 1 == index) && (loop.getNext().hasNext() == false))
-			{
-				loop.setNext(new ListElement());
-				tail = loop;
-				System.out.println("Node deleted.");
-				return;
-			}
-			else if (i + 1 == index)
-			{
-				loop.setNext(loop.getNext().getNext());
-				loop.getNext().setPrev(loop);
-				System.out.println("Node deleted.");
 				return;
 			}
 			i++;
 			loop=loop.getNext();
 		}
+		System.out.println("Index is larger than the list.");
+		return;
 	}
 	
 	public void printLinkedListTail(){
+		//Loops from the tail back and prints each element
 		ListElement sentinel = tail;
 		System.out.println("List from tail:");
 		while (sentinel != null)
@@ -118,6 +133,7 @@ public class LinkedList {
 	
 	public void printLinkedListHead()
 	{
+		//Loops from the head and prints each element
 		ListElement sentinel = head;
 		System.out.println("List from head:");
 		while (sentinel != null)
