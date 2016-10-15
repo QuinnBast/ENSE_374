@@ -97,4 +97,40 @@ public class LinkedList {
 			loop=loop.getNext();
 		}
 	}
+	
+	public void printLinkedListTail(){
+		ListElement sentinel = head;
+		
+		//Check if the list is empty
+		if (head == null)
+		{
+			System.out.println("Nothing in the List.");
+			return;
+		}
+		//Count the number of elements in the list.
+		int numberOfElements=1;
+		while (sentinel.hasNext())
+		{
+			sentinel = sentinel.getNext();
+			numberOfElements++;
+		}
+		
+		//Create an array with the size that was found
+		int[] ArrayList = new int[numberOfElements];
+		sentinel = head;	//Reset the sentinel
+		int i=0;
+		do
+		{		//Traverse the list, adding each data element into the array
+			ArrayList[i]=sentinel.getData();
+			sentinel = sentinel.getNext();
+			i++;
+		} while (sentinel != null);
+		
+		for (i=(numberOfElements-1); i>=0; i--)
+		{
+			//Print out the array backwards.
+			System.out.println("List from tail:" + ArrayList[i]);
+		}
+		return;
+	}
 }

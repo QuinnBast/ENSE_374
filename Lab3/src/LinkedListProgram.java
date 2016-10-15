@@ -21,6 +21,8 @@ public class LinkedListProgram {
 		LList.getElement(4);	//Should not find after deleting, OK
 		
 		LList.deleteElement(4);	//Should not find, OK
+		
+		LList.printLinkedListTail();
 	}
 
 }
