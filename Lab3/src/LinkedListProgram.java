@@ -7,6 +7,8 @@ public class LinkedListProgram {
 	{
 		LList.addElement(7);
 		LList.addElement(12);
+		
+		LList.getElement(4);
 	}
 
 }
