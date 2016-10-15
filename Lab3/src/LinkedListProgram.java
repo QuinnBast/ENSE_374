@@ -1,29 +1,58 @@
+import java.util.Scanner;
 
 public class LinkedListProgram {
 	
+	static Scanner in = new Scanner(System.in);
+	
 	private static LinkedList LList = new LinkedList();
+	private static UserInterface UI = new UserInterface();
 	
 	public static void main(String args[])
 	{
-
-		LList.addElement(0);
-		LList.addElement(1);
-		LList.addElement(2);
-		LList.addElement(3);
-		LList.addElement(4);
-		
-		LList.getElement(0);	//Should find, OK
-		LList.getElement(1);	//Should find, OK
-		LList.getElement(4);	//Should find, OK
-		LList.getElement(7);	//Should not Find, OK
-		
-		LList.deleteElement(2);	//Should delete, OK
-		LList.getElement(4);	//Should not find after deleting, OK
-		
-		LList.deleteElement(4);	//Should not find, OK
-		
-		LList.printLinkedListTail();
-		LList.printLinkedListHead();
+		int userchoice = 1;
+		while (userchoice != 5)
+		{
+		UI.displayMenu();
+		userchoice = in.nextInt();
+		switch(userchoice)
+		{
+		case 1:
+		{
+			UI.displayAddElementText();
+			LList.addElement(in.nextInt());
+			break;
+		}
+		case 2:
+		{
+			UI.displaygetElementText();
+			LList.getElement(in.nextInt());
+			break;
+		}
+		case 3:
+		{
+			UI.displaydeleteElementText();
+			LList.deleteElement(in.nextInt());
+			break;
+		}
+		case 4:
+		{
+			UI.displayPrintListtText();
+			String choice = in.next();
+			if (choice.equals("Head"))
+			{
+				LList.printLinkedListHead();
+			}
+			else if (choice.equals("Tail"))
+			{
+				LList.printLinkedListTail();
+			}
+			else
+				System.out.println("Invalid input.");
+			
+			break;
+		}
+		}
 	}
 
+}
 }

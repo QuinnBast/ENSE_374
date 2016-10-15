@@ -107,6 +107,7 @@ public class LinkedList {
 			System.out.println("Nothing in the List.");
 			return;
 		}
+		System.out.println("List from tail:");
 		//Count the number of elements in the list.
 		int numberOfElements=1;
 		while (sentinel.hasNext())
@@ -129,7 +130,7 @@ public class LinkedList {
 		for (i=(numberOfElements-1); i>=0; i--)
 		{
 			//Print out the array backwards.
-			System.out.println("List from tail:" + ArrayList[i]);
+			System.out.println(ArrayList[i]);
 		}
 		return;
 	}
