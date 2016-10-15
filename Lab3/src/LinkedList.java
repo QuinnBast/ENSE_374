@@ -121,6 +121,11 @@ public class LinkedList {
 	
 	public void printLinkedListTail(){
 		//Loops from the tail back and prints each element
+		if(head == null)
+		{
+			System.out.println("Nothing in the list.");
+		}
+		
 		ListElement sentinel = tail;
 		System.out.println("List from tail:");
 		while (sentinel != null)
@@ -133,6 +138,11 @@ public class LinkedList {
 	
 	public void printLinkedListHead()
 	{
+		if(head == null)
+		{
+			System.out.println("Nothing in the list.");
+		}
+		
 		//Loops from the head and prints each element
 		ListElement sentinel = head;
 		System.out.println("List from head:");
