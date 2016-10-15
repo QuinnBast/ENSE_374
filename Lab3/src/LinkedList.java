@@ -133,4 +133,16 @@ public class LinkedList {
 		}
 		return;
 	}
+	
+	public void printLinkedListHead()
+	{
+		ListElement sentinel = head;
+		System.out.println("List from head:");
+		while (sentinel != null)
+		{
+			System.out.println(sentinel.getData());
+			sentinel = sentinel.getNext();
+		}
+		return;
+	}
 }

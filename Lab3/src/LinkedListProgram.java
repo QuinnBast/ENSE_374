@@ -23,6 +23,7 @@ public class LinkedListProgram {
 		LList.deleteElement(4);	//Should not find, OK
 		
 		LList.printLinkedListTail();
+		LList.printLinkedListHead();
 	}
 
 }
