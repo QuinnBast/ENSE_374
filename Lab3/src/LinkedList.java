@@ -31,7 +31,7 @@ public class LinkedList {
 		ListElement loop = head;
 		int i = 0;
 		
-		if (head == null && index > 0)
+		if (head == null)
 		{
 			System.out.println("The List is empty.");
 			return head;
