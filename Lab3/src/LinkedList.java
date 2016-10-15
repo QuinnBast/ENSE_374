@@ -2,22 +2,25 @@
 public class LinkedList {
 	
 	private ListElement head = new ListElement();
+	private ListElement tail = new ListElement();
 	
 	public LinkedList(){
 		head = null;
 	}
 	
 	public void addElement(int data){
-		ListElement loop = head;
 		if (head == null)
 		{
 			head = new ListElement(data);
+			tail = head;
 			return;
 		}
-		while (loop.hasNext()){
-			loop = loop.getNext();
+		else
+		{
+		tail.setNext(new ListElement(data));
+		tail.getNext().setPrev(tail);
+		tail = tail.getNext();
 		}
-		loop.setNext(new ListElement(data));
 	}
 	
 	public ListElement getElement(int index){
@@ -71,6 +74,7 @@ public class LinkedList {
 		if (index == 0)
 		{
 			head = head.getNext();
+			head.setPrev(new ListElement());
 			System.out.println("Node deleted.");
 			return;
 		}
@@ -81,15 +85,18 @@ public class LinkedList {
 				System.out.println("Index is larger than the list.");
 				return;
 			}
+			//If the node is the last node in the list
 			if ((i + 1 == index) && (loop.getNext().hasNext() == false))
 			{
 				loop.setNext(new ListElement());
+				tail = loop;
 				System.out.println("Node deleted.");
 				return;
 			}
 			else if (i + 1 == index)
 			{
 				loop.setNext(loop.getNext().getNext());
+				loop.getNext().setPrev(loop);
 				System.out.println("Node deleted.");
 				return;
 			}
@@ -99,37 +106,12 @@ public class LinkedList {
 	}
 	
 	public void printLinkedListTail(){
-		ListElement sentinel = head;
-		
-		//Check if the list is empty
-		if (head == null)
+		ListElement sentinel = tail;
+		System.out.println("List from tail:");
+		while (sentinel != null)
 		{
-			System.out.println("Nothing in the List.");
-			return;
-		}
-		//Count the number of elements in the list.
-		int numberOfElements=1;
-		while (sentinel.hasNext())
-		{
-			sentinel = sentinel.getNext();
-			numberOfElements++;
-		}
-		
-		//Create an array with the size that was found
-		int[] ArrayList = new int[numberOfElements];
-		sentinel = head;	//Reset the sentinel
-		int i=0;
-		do
-		{		//Traverse the list, adding each data element into the array
-			ArrayList[i]=sentinel.getData();
-			sentinel = sentinel.getNext();
-			i++;
-		} while (sentinel != null);
-		
-		for (i=(numberOfElements-1); i>=0; i--)
-		{
-			//Print out the array backwards.
-			System.out.println("List from tail:" + ArrayList[i]);
+			System.out.println(sentinel.getData());
+			sentinel = sentinel.getPrev();
 		}
 		return;
 	}
