@@ -9,11 +9,29 @@ public class ListElement {
 		this.next = null;
 	}
 	
+	public ListElement(int data){
+		this.data = data;
+		this.next = null;
+	}
+	
 	public int getData(){
 		return data;
 	}
 	
 	public void setData(int data){
 		this.data = data;
+	}
+	
+	public boolean hasNext(){
+		return (this.next != null) ? true : false;
+	}
+	
+	public ListElement getNext(){
+		return this.next;
+	}
+	
+	public void setNext(int value){
+		this.next = new ListElement();
+		this.next.setData(value);
 	}
 }
