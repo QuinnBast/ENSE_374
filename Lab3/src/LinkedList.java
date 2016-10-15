@@ -72,10 +72,18 @@ public class LinkedList {
 		//The head is being deleted.
 		if (index == 0)
 		{
+			if (head.hasNext()){
 			head = head.getNext();
 			head.setPrev(new ListElement());
 			System.out.println("Node deleted.");
 			return;
+			}
+			else
+			{
+				head = new ListElement();
+				System.out.println("Node deleted.");
+				return;
+			}
 		}
 		else while (loop != null)
 		{

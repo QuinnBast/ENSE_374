@@ -25,7 +25,11 @@ public class LinkedListProgram {
 		case 2:
 		{
 			UI.displaygetElementText();
-			LList.getElement(in.nextInt());
+			ListElement found = LList.getElement(in.nextInt());
+			if (found != null)
+			{
+				System.out.println("Found: " + found.getData());
+			}
 			break;
 		}
 		case 3:
