@@ -27,10 +27,10 @@ public class LinkedList {
 		ListElement loop = head;
 		int i = 0;
 		
-		if (head == null && index > 0)
+		if (head == null)
 		{
 			System.out.println("The List is empty.");
-			return head;
+			return null;
 		}
 		else while (i <= index)
 		{
@@ -47,11 +47,11 @@ public class LinkedList {
 			else
 			{
 				System.out.println("Index is larger than the list.");
-				return (new ListElement());
+				return null;
 			}
 		}
 		System.out.println("Index is larger than the list.");
-		return (new ListElement());
+		return null;
 	}
 
 	public void deleteElement(int index)
@@ -70,9 +70,18 @@ public class LinkedList {
 		//The head is being deleted.
 		if (index == 0)
 		{
+			if (head.hasNext())
+			{
 			head = head.getNext();
 			System.out.println("Node deleted.");
 			return;
+			}
+			else
+			{
+				head = null;
+				System.out.println("Node deleted.");
+				return;
+			}
 		}
 		else while (i <= index)
 		{
@@ -137,6 +146,12 @@ public class LinkedList {
 	
 	public void printLinkedListHead()
 	{
+		if (head == null)
+		{
+			System.out.println("Nothing in the List.");
+			return;
+		}
+		
 		ListElement sentinel = head;
 		System.out.println("List from head:");
 		while (sentinel != null)
