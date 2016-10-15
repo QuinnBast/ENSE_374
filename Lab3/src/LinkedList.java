@@ -80,7 +80,7 @@ public class LinkedList {
 			}
 			else
 			{
-				head = new ListElement();
+				head = null;
 				System.out.println("Node deleted.");
 				return;
 			}
